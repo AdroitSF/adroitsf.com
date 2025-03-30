@@ -1,4 +1,6 @@
 {{- if not (.Param "hideFooter") }}
+{{- partial "extend_footer.html" . }}
+
 <footer class="footer">
     {{- if not site.Params.footer.hideCopyright }}
         {{- if site.Copyright }}
@@ -30,7 +32,7 @@
 </a>
 {{- end }}
 
-{{- partial "extend_footer.html" . }}
+
 
 <script>
     let menu = document.getElementById('menu')
