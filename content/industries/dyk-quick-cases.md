@@ -2,9 +2,8 @@
 title:       'Salesforce Service Cloud : How do I create Cases quick?'
 subtitle:    "Creating Cases provide visibility over customer interactions; Creating Cases does not have to increase average handling time of agents."
 description: "customers usually push back against Cases, indicating that creating a case increases their aht. Creating cases using quick action allows us to create cases quickly on the call without creating custom cases."
-date:        '2025-03-15T15:43:06+13:00'
+date:        2025-03-15T15:43:06+13:00
 author: AdroitSF
-published: true
 tags:        ["Service Cloud", "Case Management", "AHT", "Quick Action"]
 URL: "/2025/mar/15/case-creation-using-quick-action"
 categories:  ["Did You Know?" ]
