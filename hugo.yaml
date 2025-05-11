@@ -104,11 +104,12 @@ params:
         url: tags
 
   homeInfoParams:
-    Title: "Elevate Salesforce with AI"
+    Title: "Salesforce with artificial intelligence"
     Content: >
-      👋 Welcome to notes to skill-up on artificial intelligence
+      ✨ With the hard pivot that Salesforce has made with AI
+      It's hard to remember how Salesforce had predictive and other AI before this Gen AI wave.
 
-      - Learning and notes on using AI in Salesforce
+      - Writing on AI usage and patterns in Salesforce, heavily dependent on the official literature.
 
   socialIcons:
     - name: github
