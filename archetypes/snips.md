@@ -31,8 +31,9 @@ related: []           # list of related snip UUIDs or slugs
 link: ""            # external resource URL
 
 # Papermod-specific parameters
-disableToc: false
-disableReadingTime: false
+snippet: true         # treat as a small note (disables TOC, reading time)
+disableToc: true
+disableReadingTime: true
 
 ---
 

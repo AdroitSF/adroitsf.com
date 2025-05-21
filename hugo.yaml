@@ -8,7 +8,9 @@ theme: ["PaperMod"]
 # If your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would
 # contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
 copyright: "© [AdroitSF](https://adroitsf.com)"
-paginate: 5
+"pagination": {
+  "pagerSize": 10
+}
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
