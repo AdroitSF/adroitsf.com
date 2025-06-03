@@ -1,0 +1,9 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+{{- $css := resources.Get "css/main.css" | resources.PostCSS }}
+{{- if hugo.IsProduction }}
+  {{- $css = $css | minify | fingerprint }}
+{{- end }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen">
+{{- hugo.Generator -}}

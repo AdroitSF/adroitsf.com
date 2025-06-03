@@ -2,7 +2,7 @@ baseURL: https://adroitsf.com/
 languageCode: en-us
 title: AdroitSF
 
-theme: ["PaperMod"]
+theme: "droit"
 
 enableGitInfo: true
 
@@ -46,28 +46,24 @@ languages:
         - name: Tags
           url: tags/
           weight: 10
+      footer:
+        - name: About
+          url: /about/
+          weight: 5
+        - name: Contact
+          url: /contact/
+          weight: 10
+        - name: Terms
+          url: /terms/
+          weight: 15
 
     # custom params for each language should be under [langcode].parms - hugo v0.120.0
-    params:
-      profileMode:
-        enabled: false
-        title: PaperMod
-        imageUrl: "https://raw.githubusercontent.com/googlefonts/noto-emoji/master/svg/emoji_u1f9d1_1f3fb_200d_1f4bb.svg"
-        imageTitle: ProfileMode image
-        # imageWidth: 120
-        # imageHeight: 120
-        subtitle: "☄️ Fast | ☁️ Fluent | 🌙 Smooth | 📱 Responsive"
-        buttons:
-          - name: Blog
-            url: posts
-          - name: Profile Mode
-            url: https://github.com/adityatelange/hugo-PaperMod/wiki/Features#profile-mode
+    params: {}
 
 outputs:
   home:
     - HTML
     - RSS
-    - JSON
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
@@ -78,58 +74,18 @@ params:
   author: adroitSF
   # author: ["Me", "You"] # multiple authors
 
-  defaultTheme: auto
-  disableThemeToggle: true
-  ShowShareButtons: true
-  ShowReadingTime: true
+
   # disableSpecial1stPost: true
-  displayFullLangName: true
-  ShowPostNavLinks: true
-  ShowBreadCrumbs: true
-  ShowCodeCopyButtons: true
-  ShowRssButtonInSectionTermList: true
-  ShowAllPagesInArchive: true
   ShowPageNums: true
-  ShowToc: true
   # comments: false
-  images: ["images/papermod-cover.png"]
 
-  profileMode:
-    enabled: false
-    title: PaperMod
-    imageUrl: "#"
-    imageTitle: my image
-    # imageWidth: 120
-    # imageHeight: 120
-    buttons:
-      - name: Archives
-        url: archives
-      - name: Tags
-        url: tags
 
-  homeInfoParams:
-    Title: "Salesforce with artificial intelligence"
-    Content: >
-      ✨ With the hard pivot that Salesforce has made with AI
-      It's hard to remember how Salesforce had predictive and other AI before this Gen AI wave.
 
-      - Writing on AI usage and patterns in Salesforce, heavily dependent on the official literature.
 
-  socialIcons:
-    - name: github
-      title: AdroitSF on GitHub
-      url: "https://github.com/AdroitSF"
+
     
-  editPost:
-    URL: "https://github.com/AdroitSF/adroitsf.com/tree/main/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
 
-  label:
- #  iconSVG: '<svg xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 -960 960 960" fill="currentColor"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>'
-  text: "Home"
-  icon: img/favicon.png
-  # iconHeight: 35
+
 
   # analytics:
   #     google:
@@ -143,19 +99,7 @@ params:
     apple_touch_icon: "img/apple-touch-icon.png"
   #  safari_pinned_tab: "<link / abs url>"
 
-  # cover:
-  #     hidden: true # hide everywhere but not in structured data
-  #     hiddenInList: true # hide on list pages and home
-  #     hiddenInSingle: true # hide on single page
 
-  # fuseOpts:
-  #     isCaseSensitive: false
-  #     shouldSort: true
-  #     location: 0
-  #     distance: 1000
-  #     threshold: 0.4
-  #     minMatchCharLength: 0
-  #     keys: ["title", "permalink", "summary", "content"]
 
 markup:
   goldmark:

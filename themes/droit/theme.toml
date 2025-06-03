@@ -1,0 +1,18 @@
+name = "Droit"
+license = "MIT"
+licenselink = "https://github.com/yourname/yourrepo/blob/master/LICENSE"
+description = "A minimalist, performant theme for Hugo using Tailwind CSS."
+homepage = "http://example.com/"
+tags = ["blog", "tailwind", "minimalist", "responsive", "fast"]
+features = ["tailwind css", "responsive", "minimalist"]
+min_version = "0.90.0"
+
+[author]
+  name = "Your Name"
+  homepage = "yourwebsite.com"
+
+# If porting from a theme
+[original]
+  name = "Keo"
+  homepage = ""
+  repo = ""

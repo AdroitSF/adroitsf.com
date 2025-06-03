@@ -1,0 +1,11 @@
+<div class="social-share mt-8 pt-6 border-t border-red-500">
+  <h4 class="font-barlow text-lg text-indigo-600 mb-3">Share this:</h4>
+  <ul class="flex flex-wrap gap-x-4 gap-y-2">
+    <li><a href="https://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title | urlquery }}" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-800 transition-colors">X/Twitter</a></li>
+    <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Permalink }}" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-800 transition-colors">LinkedIn</a></li>
+    <li><a href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}&t={{ .Title | urlquery }}" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-800 transition-colors">Hacker News</a></li>
+    <li><a href="https://www.reddit.com/submit?url={{ .Permalink }}&title={{ .Title | urlquery }}" target="_blank" rel="noopener" class="text-indigo-600 hover:text-indigo-800 transition-colors">Reddit</a></li>
+    <li><a href="mailto:?subject={{ .Title | urlquery }}&body={{ .Permalink | urlquery }}" class="text-indigo-600 hover:text-indigo-800 transition-colors">Email</a></li>
+    <li><a href="{{ .Permalink }}" onclick="event.preventDefault(); navigator.clipboard.writeText('{{ .Permalink }}').then(() => { this.textContent = 'Copied!'; setTimeout(() => { this.textContent = 'Copy Link';}, 2000); }).catch(err => { console.error('Failed to copy: ', err); alert('Failed to copy link.'); });" class="text-indigo-600 hover:text-indigo-800 transition-colors">Copy Link</a></li>
+  </ul>
+</div>
