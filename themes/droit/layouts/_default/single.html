@@ -1,18 +1,18 @@
 {{ define "main" }}
-<article class="prose max-w-none mx-auto text-near-black pb-6 border-b border-gray-200">
+<article class="mx-auto pb-6 border-b border-gray-200">
     <header class="mb-8">
         <h1 class="font-barlow text-4xl md:text-5xl text-near-black mb-2">{{ .Title }}</h1>
         {{ if ne .Type "page" }}
         <p class="text-sm text-near-black/70 font-albert-sans">
             Published on <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
             {{ if .Params.categories }}
-                in {{ range .Params.categories }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="text-indigo-600 hover:text-indigo-800">{{ . }}</a> {{ end }}
+                in {{ range .Params.categories }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="text-navy hover:text-navy/80">{{ . }}</a> {{ end }}
             {{ end }}
         </p>
         {{ end }}
     </header>
     
-    <div class="font-albert-sans text-near-black/90 leading-relaxed">
+    <div class="prose max-w-none">
         {{ .Content }}
     </div>
 

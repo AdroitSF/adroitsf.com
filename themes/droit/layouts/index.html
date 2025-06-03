@@ -1,30 +1,31 @@
 {{ define "main" }}
 <div class="prose max-w-none mx-auto p-6 bg-white text-near-black">
-    <h1 class="font-barlow text-4xl text-near-black mb-6">{{ .Site.Title }}</h1>
 <div class="hero-section relative bg-cover bg-center text-white" style="background-image: url('{{ "images/hero-background.jpg" | relURL }}'); min-height: 45vh; display: flex; align-items: center; justify-content: center;">
-        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Overlay for readability -->
+        <!-- <div class="absolute inset-0 bg-black opacity-50"></div> --> <!-- Overlay for readability -->
         <div class="relative z-10 text-center p-8">
-            <h1 class="text-5xl font-bold font-barlow mb-4 text-white">AdroitSF</h1>
-            <p class="text-xl font-barlow text-white">Exploring the frontiers of AI in Salesforce</p> <!-- Replace with your desired subtitle -->
+            <!-- Hero title and subtitle removed as per user request -->
         </div>
     </div>
     
     <div class="mt-12">
-        <h2 class="font-barlow text-3xl text-indigo-600 border-b border-red-500 pb-2 mb-6">Latest Content</h2>
+        <div class="mb-6">
+            <h2 class="font-barlow text-3xl text-navy pb-2">Latest Content</h2>
+            <div class="h-0.5 bg-red-500 w-20 mt-1"></div>
+        </div>
         <ul class="space-y-8">
-            {{ $pages := where .Site.RegularPages "Type" "in" (slice "post" "snip") }}
+            {{ $pages := where .Site.RegularPages "Type" "in" site.MainSections }}
             {{ range first 5 $pages.ByDate.Reverse }}
                 <li class="pb-4 border-b border-neutral-200 last:border-b-0">
                     <article>
                         <h3 class="font-barlow text-2xl font-semibold mb-1">
-                            <a href="{{ .RelPermalink }}" class="text-indigo-600 hover:text-indigo-800 transition-colors">{{ .Title }}</a>
+                            <a href="{{ .RelPermalink }}" class="text-navy hover:text-navy/80 transition-colors">{{ .Title }}</a>
                         </h3>
                         <p class="text-sm text-near-black/70 mb-2">
                             <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
                             {{ if .Params.categories }}
                                 <span class="mx-1">&middot;</span>
                                 {{ range .Params.categories }}
-                                    <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="text-near-black/70 hover:text-indigo-700 text-xs">#{{ . }}</a> 
+                                    <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="text-near-black/70 hover:text-navy/80 text-xs">#{{ . }}</a> 
                                 {{ end }}
                             {{ end }}
                         </p>
@@ -53,7 +54,7 @@
                 {{ $archiveLink = ("/" | relLangURL) }}
             {{ end }}
             <a href="{{ $archiveLink }}" 
-               class="text-indigo-600 hover:text-indigo-800 font-semibold">
+               class="text-navy hover:text-navy/80 font-semibold">
                 View all &rarr;
             </a>
         </div>

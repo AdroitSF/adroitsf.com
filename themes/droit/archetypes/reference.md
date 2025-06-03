@@ -4,8 +4,8 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
 slug: "{{ .Name }}"
-type: "page" # Default type for standalone pages
-summary: "A brief summary of this page."
+type: "reference"
+summary: "A brief summary of this reference material."
 categories: []
 tags: []
 authors: []

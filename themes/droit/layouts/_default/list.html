@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="max-w-3xl mx-auto p-6">
-    <header class="mb-10 pb-4 border-b border-indigo-200">
+    <header class="mb-10 pb-4 border-b border-navy/30">
         <h1 class="font-barlow text-4xl text-near-black">{{ .Title }}</h1>
         {{ if .Content }}
             <div class="prose mt-4 text-near-black/90">{{ .Content }}</div>
@@ -12,7 +12,7 @@
         <li class="pb-6 border-b border-gray-200">
             <article>
                 <h2 class="font-barlow text-3xl mb-2">
-                    <a href="{{ .RelPermalink }}" class="text-indigo-600 hover:text-indigo-800 transition-colors">{{ .Title }}</a>
+                    <a href="{{ .RelPermalink }}" class="text-navy hover:text-navy/80 transition-colors">{{ .Title }}</a>
                 </h2>
                 <p class="text-sm text-near-black/70 font-albert-sans mb-3">
                     <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>
@@ -21,7 +21,7 @@
                     {{ .Summary }}
                 </div>
                 {{ if .Truncated }}
-                <a href="{{ .RelPermalink }}" class="inline-block mt-4 text-indigo-600 hover:text-indigo-800 font-semibold transition-colors">Read more &rarr;</a>
+                <a href="{{ .RelPermalink }}" class="inline-block mt-4 text-navy hover:text-navy/80 font-semibold transition-colors">Read more &rarr;</a>
                 {{ end }}
             </article>
         </li>

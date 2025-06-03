@@ -1,11 +1,11 @@
-<footer class="bg-white text-near-black py-8 text-center border-t border-indigo-600">
+<footer class="bg-white text-near-black py-8 text-center border-t border-navy">
     <div class="container mx-auto px-4">
         <p class="text-sm">
             &copy; {{ now.Format "2006" }} {{ .Site.Title }}. {{ T "allRightsReserved" | default "All rights reserved." }}
         </p>
         <p class="text-xs mt-3">
             {{ range $index, $element := .Site.Menus.footer }}
-                {{ if $index }}<span class="mx-1 text-near-black/40">|</span>{{ end }}<a href="{{ .URL | relLangURL }}" class="text-near-black/70 hover:text-indigo-700 transition-colors">{{ .Name }}</a>
+                {{ if $index }}<span class="mx-1 text-near-black/40">|</span>{{ end }}<a href="{{ .URL | relLangURL }}" class="text-near-black/70 hover:text-navy/80 transition-colors">{{ .Name }}</a>
             {{ end }}
         </p>
 

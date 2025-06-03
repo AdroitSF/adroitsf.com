@@ -7,6 +7,13 @@ theme: "droit"
 enableGitInfo: true
 
 
+outputFormats:
+  SearchIndex:
+    mediaType: "application/json"
+    baseName: "searchindex"
+    isPlainText: true
+    notAlternative: true
+
 # If your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would
 # contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
 copyright: "© [AdroitSF](https://adroitsf.com)"
@@ -21,7 +28,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-mainsections: ["posts","opinions","reference"]
+mainSections: ["posts", "opinions", "reference", "industries", "snips"]
 
 minify:
   disableXML: true
@@ -40,9 +47,7 @@ languages:
         - name: Archive
           url: archives
           weight: 5
-        - name: Search
-          url: search/
-          weight: 10
+
         - name: Tags
           url: tags/
           weight: 10
@@ -58,12 +63,16 @@ languages:
           weight: 15
 
     # custom params for each language should be under [langcode].parms - hugo v0.120.0
-    params: {}
+    params:
+      hero:
+        title: "AdroitSF"
+        subtitle: "Exploring the frontiers of AI in Salesforce"
 
 outputs:
   home:
     - HTML
     - RSS
+    - SearchIndex
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.

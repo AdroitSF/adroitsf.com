@@ -4,8 +4,8 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
 slug: "{{ .Name }}"
-type: "page" # Default type for standalone pages
-summary: "A brief summary of this page."
+type: "industries"
+summary: "A brief summary related to this industry."
 categories: []
 tags: []
 authors: []

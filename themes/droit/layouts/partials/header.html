@@ -1,14 +1,14 @@
-<header class="bg-white text-near-black border-b border-indigo-600">
+<header class="bg-white text-near-black border-b border-navy">
     <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
         <div>
-            <a href="{{ .Site.BaseURL | relLangURL }}" class="text-2xl font-barlow font-bold text-near-black hover:text-indigo-700 transition-colors">
+            <a href="{{ .Site.BaseURL | relLangURL }}" class="text-2xl font-barlow font-bold text-near-black hover:text-navy/80 transition-colors">
                 {{ .Site.Title }}
             </a>
         </div>
         <ul class="flex space-x-6 font-barlow">
             {{ range .Site.Menus.main }}
             <li>
-                <a href="{{ .URL | relLangURL }}" class="text-near-black hover:text-indigo-700 transition-colors">{{ .Name }}</a>
+                <a href="{{ .URL | relLangURL }}" class="text-near-black hover:text-navy/80 transition-colors">{{ .Name }}</a>
             </li>
             {{ end }}
         </ul>
