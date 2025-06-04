@@ -50,6 +50,12 @@ jobs:
         run: git submodule update --init --recursive
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build Tailwind CSS (root)
+        run: |
+          npx tailwindcss -c tailwind.config.js -i ./assets/css/style.css -o ./static/css/style.css --minify || true
+      - name: Build Tailwind CSS (theme)
+        run: |
+          npx tailwindcss -c themes/droit/tailwind.config.js -i themes/droit/assets/css/style.css -o themes/droit/static/css/style.css --minify || true
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache

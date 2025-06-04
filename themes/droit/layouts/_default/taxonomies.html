@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="max-w-6xl mx-auto p-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8">
+    {{ range $taxonomy, $terms := .Site.Taxonomies }}
+      <div>
+        <div class="font-bold text-lg text-near-black mb-3">{{ title $taxonomy }}</div>
+        <ul class="list-none m-0 p-0 space-y-1">
+          {{ range $term, $pages := $terms }}
+            <li>
+              <a href="{{ (index $pages 0).Page.RelPermalink }}" class="text-base text-navy hover:underline font-medium">
+                {{ $term }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

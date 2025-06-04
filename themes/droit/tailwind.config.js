@@ -3,6 +3,9 @@ module.exports = {
     './layouts/**/*.html',
     './content/**/*.md',
     './archetypes/**/*.md',
+    './themes/droit/layouts/**/*.html', // add this if not present
+    './themes/droit/content/**/*.md',
+    './themes/droit/archetypes/**/*.md',
   ],
   theme: {
     extend: {
@@ -22,34 +25,59 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: { // This targets the default 'prose' class styles
           css: {
+            'h1, h2, h3, h4, h5, h6': {
+              color: theme('colors.near-black'),
+              fontFamily: theme('fontFamily.barlow').join(', '),
+            },
+            h1: {
+              fontWeight: '700',
+              fontSize: theme('fontSize.4xl'),
+              marginTop: theme('spacing.14'),
+              marginBottom: theme('spacing.8'),
+              lineHeight: theme('lineHeight.tight'),
+            },
             h2: {
+              fontWeight: '700',
+              fontSize: theme('fontSize.3xl'),
               marginTop: theme('spacing.12'),
               marginBottom: theme('spacing.6'),
-              fontSize: theme('fontSize.2xl'),
-              fontWeight: 'bold',
-              color: theme('colors.near-black'),
+              lineHeight: theme('lineHeight.tight'),
             },
             h3: {
+              fontWeight: '600',
+              fontSize: theme('fontSize.2xl'),
               marginTop: theme('spacing.10'),
               marginBottom: theme('spacing.5'),
-              fontSize: theme('fontSize.xl'),
-              fontWeight: 'bold',
-              color: theme('colors.near-black'),
+              lineHeight: theme('lineHeight.snug'),
             },
             h4: {
+              fontWeight: '600',
+              fontSize: theme('fontSize.xl'),
               marginTop: theme('spacing.8'),
               marginBottom: theme('spacing.4'),
+              lineHeight: theme('lineHeight.snug'),
+            },
+            h5: {
+              fontWeight: '500',
               fontSize: theme('fontSize.lg'),
-              fontWeight: 'bold',
-              color: theme('colors.near-black'),
+              marginTop: theme('spacing.6'),
+              marginBottom: theme('spacing.3'),
+              lineHeight: theme('lineHeight.normal'),
+            },
+            h6: {
+              fontWeight: '500',
+              fontSize: theme('fontSize.base'),
+              marginTop: theme('spacing.5'),
+              marginBottom: theme('spacing.2'),
+              lineHeight: theme('lineHeight.normal'),
             },
             p: {
-              marginTop: theme('spacing.5'),
-              marginBottom: theme('spacing.5'),
-              fontSize: theme('fontSize.base'),
-              color: theme('colors.near-black'),
-              lineHeight: theme('lineHeight.relaxed'),
-            },
+  color: theme('colors.near-black'),
+  fontSize: theme('fontSize.base'),
+  lineHeight: theme('lineHeight.relaxed'),
+  marginTop: theme('spacing.6'),
+  marginBottom: theme('spacing.6'),
+},
             'ul > li::before': {
               backgroundColor: theme('colors.near-black'),
             },
@@ -57,6 +85,12 @@ module.exports = {
               color: theme('colors.near-black'),
             },
             a: {
+                color: theme('colors.navy'),
+                textDecoration: 'none', // remove underline
+                borderBottom: '1px solid ' + theme('colors.navy'),
+                boxShadow: 'none',
+                paddingBottom: '1px',
+                textDecoration: 'none',
               color: theme('colors.navy'),
               '&:hover': {
                 color: theme('colors.navy'),
@@ -72,6 +106,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/typography'),
     require('@tailwindcss/typography'), // Add the typography plugin
   ],
 }
