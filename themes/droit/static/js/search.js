@@ -1,94 +1,64 @@
 (function () {
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
+    const searchInput = document.getElementById('search-input');
+    const resultsDiv = document.getElementById('search-results');
     let fuse;
-    let searchList = [];
 
-    // Fetch the search index
+    if (!searchInput || !resultsDiv) {
+        // Silently exit if search elements aren't on the page
+        return; 
+    }
+
     fetch('/searchindex.json')
-        .then(response => response.json())
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
         .then(data => {
-            searchList = data;
-            // Configure Fuse.js
-            const options = {
-                shouldSort: true,
-                threshold: 0.4, // Adjust for sensitivity (0.0 = perfect match, 1.0 = match anything)
-                location: 0,
-                distance: 100,
-                maxPatternLength: 32,
-                minMatchCharLength: 1,
-                keys: [
-                    { name: "title", weight: 0.8 },
-                    { name: "content", weight: 0.5 },
-                    { name: "summary", weight: 0.5 },
-                    { name: "tags", weight: 0.3 },
-                    { name: "categories", weight: 0.3 }
-                ]
-            };
-            fuse = new Fuse(searchList, options);
+            fuse = new Fuse(data, {
+                keys: ['title', 'summary', 'content', 'tags', 'categories'],
+                threshold: 0.3,
+                ignoreLocation: true,
+                minMatchCharLength: 2,
+            });
         })
         .catch(error => {
-            console.error("Error fetching search index:", error);
-            if (searchResults) {
-                searchResults.innerHTML = "<p>Error loading search index. Please try again later.</p>";
-            }
+            console.error("Error fetching or initializing search index:", error);
+            resultsDiv.innerHTML = '<div class="text-near-black/60">Error loading search. Please try again later.</div>';
         });
 
-    if (searchInput) {
-        searchInput.addEventListener('input', function (event) {
-            const query = event.target.value.trim();
-            if (query.length < 2) { // Minimum query length
-                if (searchResults) searchResults.innerHTML = '';
-                return;
-            }
-
-            if (fuse) {
-                const results = fuse.search(query);
-                displayResults(results);
-            }
-        });
-    }
-
-    function displayResults(results) {
-        if (!searchResults) return;
-        searchResults.innerHTML = ''; // Clear previous results
-
-        if (results.length === 0) {
-            searchResults.innerHTML = '<p class="text-near-black/70">No results found.</p>';
+    function renderResults(results) {
+        if (!results || results.length === 0) {
+            resultsDiv.innerHTML = '<div class="text-near-black/60">No results found.</div>';
             return;
         }
+        resultsDiv.innerHTML = results.map(r => {
+            const item = r.item || r; 
+            const permalink = item.permalink || '#';
+            const title = item.title || 'Untitled';
+            const summary = item.summary || '';
+            const tagsHTML = (item.tags && Array.isArray(item.tags)) ? item.tags.map(t => `<span class='mr-2'>#${t}</span>`).join('') : '';
 
-        const ul = document.createElement('ul');
-        ul.className = 'list-none p-0 m-0'; // Tailwind classes for basic list reset
-
-        results.forEach(function (result) {
-            const item = result.item;
-            const li = document.createElement('li');
-            li.className = 'mb-4 pb-4 border-b border-neutral-200'; // Style for each result item
-
-            const titleLink = document.createElement('a');
-            titleLink.href = item.permalink;
-            titleLink.className = 'text-xl font-semibold text-indigo-600 hover:text-indigo-800';
-            titleLink.textContent = item.title;
-
-            const summary = document.createElement('p');
-            summary.className = 'text-sm text-near-black/80 mt-1';
-            summary.textContent = item.summary || (item.content ? item.content.substring(0, 150) + '...' : '');
-
-
-            li.appendChild(titleLink);
-            li.appendChild(summary);
-            // You could add more info like tags or categories here
-            // For example:
-            // if (item.tags && item.tags.length > 0) {
-            //     const tagsP = document.createElement('p');
-            //     tagsP.className = 'text-xs text-near-black/60 mt-1';
-            //     tagsP.textContent = 'Tags: ' + item.tags.join(', ');
-            //     li.appendChild(tagsP);
-            // }
-
-            ul.appendChild(li);
-        });
-        searchResults.appendChild(ul);
+            return `<div class="border-b border-gray-200 pb-4 mb-4">
+                      <a href="${permalink}" class="text-xl font-semibold text-navy hover:underline">${title}</a>
+                      <div class="text-sm text-near-black/70 mt-1 mb-1">${tagsHTML}</div>
+                      <div class="text-base text-near-black/90">${summary}</div>
+                    </div>`;
+        }).join('');
     }
+
+    searchInput.addEventListener('input', function (e) {
+        const query = e.target.value.trim();
+        if (!query) {
+            resultsDiv.innerHTML = '';
+            return;
+        }
+        if (!fuse) {
+            resultsDiv.innerHTML = '<div class="text-near-black/60">Search is initializing...</div>';
+            return;
+        }
+        const searchResults = fuse.search(query);
+        renderResults(searchResults);
+    });
 })();

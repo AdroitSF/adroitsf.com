@@ -1,14 +1,21 @@
 {{ define "main" }}
-<div class="max-w-6xl mx-auto p-6">
+<div class="max-w-6xl mx-auto p-6 bg-white text-near-black"> {{/* Added bg-white text-near-black */}}
+  <header class="mb-8 text-center"> {{/* Added page header */}}
+    <h1 class="font-barlow text-4xl md:text-5xl text-near-black mb-2">Site Topics</h1>
+    <div class="h-0.5 bg-red-500 w-20 mt-1 mx-auto"></div> {{/* Optional accent line like on index.html */}}
+  </header>
+
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8">
     {{ range $taxonomy, $terms := .Site.Taxonomies }}
       <div>
-        <div class="font-bold text-lg text-near-black mb-3">{{ title $taxonomy }}</div>
+        {{/* Changed styling for taxonomy group title */}}
+        <h2 class="font-barlow text-2xl text-near-black mb-3">{{ title $taxonomy }}</h2>
         <ul class="list-none m-0 p-0 space-y-1">
           {{ range $term, $pages := $terms }}
             <li>
-              <a href="{{ (index $pages 0).Page.RelPermalink }}" class="text-base text-navy hover:underline font-medium">
-                {{ $term }}
+              {{/* Adjusted term link styling */}}
+              <a href="{{ (index $pages 0).Page.RelPermalink }}" class="text-base text-navy hover:text-navy/80 font-albert-sans">
+                {{ $term }} <span class="text-xs text-near-black/60">({{ len $pages }})</span> {{/* Added count, optional */}}
               </a>
             </li>
           {{ end }}

@@ -1,23 +1,27 @@
 {{ define "main" }}
-<div class="max-w-3xl mx-auto p-6">
-    <header class="mb-8 pb-4 border-b border-accent-red">
-        <h1 class="font-barlow text-4xl text-heading-primary font-bold mb-2">{{ .Title }}</h1>
+<div class="max-w-3xl mx-auto p-6 bg-white text-near-black">
+    <header class="mb-8 pb-4 border-b border-red-500">
+        <h1 class="font-barlow text-4xl text-near-black font-bold mb-2">{{ .Title }}</h1>
         {{ if .Content }}
             <div class="prose mt-2 text-near-black/90">{{ .Content }}</div>
         {{ end }}
     </header>
+
     {{ if .Data.Terms }}
     <div class="mb-8">
-  <h2 class="font-barlow text-xl font-semibold text-navy mb-6 tracking-wide">All Tags</h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-2">
-    {{ range $term, $weightedPages := .Data.Terms }}
-      <div>
-        <a href="{{ (index $weightedPages 0).RelPermalink }}" class="text-base text-navy hover:underline transition-colors font-semibold">{{ $term }}</a>
+      <h2 class="font-barlow text-2xl text-near-black mb-6">All {{ .Data.Plural | title }}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
+        {{ range .Data.Terms.Alphabetical }} {{/* Changed to Alphabetical */}}
+          <div>
+            <a href="{{ .Page.RelPermalink }}" class="text-base text-navy hover:text-navy/80 font-albert-sans">
+              {{ .Name }} <span class="text-xs text-near-black/60">({{ .Count }})</span>
+            </a>
+          </div>
+        {{ end }}
       </div>
+    </div>
     {{ end }}
-  </div>
-</div>
-    {{ end }}
+
     {{ partial "pagination.html" . }}
 </div>
 {{ end }}

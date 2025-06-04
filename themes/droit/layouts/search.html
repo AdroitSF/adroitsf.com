@@ -14,44 +14,5 @@
 <!-- For example, linking to a /js/search.js file or embedding it -->
 
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
-<script>
-const searchInput = document.getElementById('search-input');
-const resultsDiv = document.getElementById('search-results');
-let fuse;
-let indexData;
-fetch('/searchindex.json')
-  .then(res => res.json())
-  .then(data => {
-    indexData = data;
-    fuse = new Fuse(data, {
-      keys: ['title', 'summary', 'content', 'tags', 'categories'],
-      threshold: 0.3,
-      ignoreLocation: true,
-      minMatchCharLength: 2,
-    });
-  });
-function renderResults(results) {
-  if (!results || results.length === 0) {
-    resultsDiv.innerHTML = '<div class="text-near-black/60">No results found.</div>';
-    return;
-  }
-  resultsDiv.innerHTML = results.map(r => {
-    const item = r.item || r;
-    return `<div class="border-b border-gray-200 pb-4">
-      <a href="${item.permalink}" class="text-xl font-semibold text-navy hover:underline">${item.title}</a>
-      <div class="text-sm text-near-black/70 mb-1">${(item.tags||[]).map(t=>`<span class='mr-2'>#${t}</span>`).join('')}</div>
-      <div class="text-base text-near-black/90">${item.summary || ''}</div>
-    </div>`;
-  }).join('');
-}
-searchInput.addEventListener('input', function(e) {
-  const q = e.target.value.trim();
-  if (!q) {
-    resultsDiv.innerHTML = '';
-    return;
-  }
-  const results = fuse.search(q);
-  renderResults(results);
-});
-</script>
+<script src="{{ "/js/search.js" | relURL }}" defer></script>
 {{ end }}

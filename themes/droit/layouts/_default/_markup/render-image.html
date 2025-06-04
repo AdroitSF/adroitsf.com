@@ -1,0 +1,33 @@
+{{/* themes/droit/layouts/_default/_markup/render-image.html */}}
+{{ $src := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) }}
+{{ $alt := .Text | plainify }}
+{{ $title := .Title | plainify }}
+
+{{ if $src }}
+  {{/* Define image widths for srcset */}}
+  {{ $widths := (slice 480 768 1024 1200) }}
+  {{ $srcsetString := "" }}
+  {{ $largestImage := $src }} {{/* Keep track of the largest processed for fallback src */}}
+
+  {{ range $i, $width := $widths }}
+    {{ $resized := $src.Resize (printf "%dx" $width) }}
+    {{ $srcsetString = printf "%s%s %dw" $srcsetString $resized.RelPermalink $resized.Width }}
+    {{ if gt $resized.Width $largestImage.Width }}{{ $largestImage = $resized }}{{ end }}
+    {{ if ne (add $i 1) (len $widths) }}{{ $srcsetString = printf "%s, " $srcsetString }}{{ end }}
+  {{ end }}
+
+  <img
+    src="{{ $largestImage.RelPermalink }}" {{/* Fallback src */}}
+    srcset="{{ $srcsetString }}"
+    sizes="(max-width: 768px) calc(100vw - 2rem), 736px" {{/* We can adjust 736px later if needed for Droit's layout */}}
+    alt="{{ $alt }}"
+    {{ with $title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async" {{/* Added decoding="async" for consistency */}}
+    width="{{ $largestImage.Width }}" {{/* Optional: provide width/height to prevent layout shift */}}
+    height="{{ $largestImage.Height }}" {{/* Optional */}}
+  />
+{{ else }}
+  {{/* Fallback for images not found in Page Resources (e.g., static assets or external) */}}
+  <img src="{{ .Destination | safeURL }}" alt="{{ $alt }}" {{ with $title }}title="{{ . }}"{{ end }} loading="lazy" decoding="async" />
+{{ end }}
