@@ -1,11 +1,8 @@
 module.exports = {
   content: [
-    './layouts/**/*.html',
-    './content/**/*.md',
-    './archetypes/**/*.md',
-    './themes/droit/layouts/**/*.html', // add this if not present
-    './themes/droit/content/**/*.md',
-    './themes/droit/archetypes/**/*.md',
+    './layouts/**/*.html',    // Relative to themes/droit/
+    './content/**/*.md',      // Relative to themes/droit/
+    './archetypes/**/*.md',   // Relative to themes/droit/
   ],
   theme: {
     extend: {
@@ -20,6 +17,7 @@ module.exports = {
         'soft-teal': '#7FD8D8', // Existing, can be kept or phased out
         'soft-teal-darker': '#5ABDBD', // Existing, can be kept or phased out
         'navy': '#000080', // Existing, will be overridden by new accents for links
+        'favicon-blue': '#209cee',
         transparent: 'transparent',
         current: 'currentColor',
       },

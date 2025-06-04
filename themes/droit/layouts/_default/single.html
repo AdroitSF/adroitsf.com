@@ -1,7 +1,7 @@
 {{ define "main" }}
 <article class="prose max-w-3xl mx-auto pb-6 border-b border-gray-200">
-    <header class="mb-8">
-        <h1 class="font-barlow text-4xl md:text-5xl text-near-black mb-2">{{ .Title }}</h1>
+    <header class="mb-8"> <!-- Removed pb-4 and border-b -->
+        <h1 class="font-barlow text-4xl text-near-black mt-0 mb-2 border-b border-favicon-blue pb-2">{{ .Title }}</h1>
         {{ if ne .Type "page" }}
         <p class="text-sm text-near-black/70 font-albert-sans">
             Published on <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 2, 2006" }}</time>

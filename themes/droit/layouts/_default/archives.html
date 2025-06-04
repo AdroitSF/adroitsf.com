@@ -1,13 +1,13 @@
 {{ define "main" }}
 <div class="prose max-w-none mx-auto p-6 bg-white text-near-black">
-    <h1 class="font-barlow text-4xl text-near-black mb-6 border-b !border-red-500 pb-2">{{ .Title }}</h1>
+    <h1 class="font-barlow text-4xl text-near-black mt-0 mb-2 border-b border-favicon-blue pb-2">{{ .Title }}</h1>
 
     {{ $pages := where site.RegularPages "Type" "in" site.MainSections }}
     {{ $pages = $pages.ByDate.Reverse }} <!-- Newest first -->
 
     {{ range $pages.GroupByDate "2006" }} <!-- Group by Year -->
         <div class="mb-12">
-            <h2 class="font-barlow text-3xl text-navy mt-8 mb-6 pb-2 border-b border-neutral-300">{{ .Key }}</h2>
+            <h2 class="font-barlow text-3xl text-navy mt-8 mb-6 pb-2 border-b border-favicon-blue">{{ .Key }}</h2>
             {{ range .Pages.GroupByDate "January" }} <!-- Group by Month Name within Year -->
                 <h3 class="font-barlow text-2xl text-navy mt-6 mb-4">{{ .Key }}</h3>
                 <ul class="list-none p-0">

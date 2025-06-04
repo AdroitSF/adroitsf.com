@@ -41,7 +41,7 @@
             const tagsHTML = (item.tags && Array.isArray(item.tags)) ? item.tags.map(t => `<span class='mr-2'>#${t}</span>`).join('') : '';
 
             return `<div class="border-b border-gray-200 pb-4 mb-4">
-                      <a href="${permalink}" class="text-xl font-semibold text-navy hover:underline">${title}</a>
+                      <a href="${permalink}" class="text-xl font-semibold">${title}</a>
                       <div class="text-sm text-near-black/70 mt-1 mb-1">${tagsHTML}</div>
                       <div class="text-base text-near-black/90">${summary}</div>
                     </div>`;
