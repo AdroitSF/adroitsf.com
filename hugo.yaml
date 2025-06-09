@@ -6,7 +6,7 @@ theme: "droit"
 
 enableGitInfo: true
 
-googleAnalytics: "G-FT91YFD4T1"
+# googleAnalytics: "G-FT91YFD4T1" # Moved to services configuration below
 
 outputFormats:
   SearchIndex:
@@ -142,6 +142,8 @@ markup:
 #     privacyEnhanced: true
 
 services:
+  googleAnalytics:
+    ID: "G-FT91YFD4T1"
   instagram:
     disableInlineCSS: true
   twitter:
