@@ -7,6 +7,7 @@ author: AdroitSF
 tags:        ["Service Cloud", "Case Management", "AHT", "Quick Action"]
 URL: "/2025/mar/15/case-creation-using-quick-action"
 categories:  ["Did You Know?" ]
+draft: true
 ---
 
 # How do you create a case quickly against a account?

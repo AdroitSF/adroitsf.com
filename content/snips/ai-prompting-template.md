@@ -20,8 +20,8 @@ type: "snip"
 uuid: "3eb55a6ab322686b7985b8460969e889"
 
 # Categorization (add as needed)
-categories: []        # e.g. ["ideas", "research"]
-tags: []              # e.g. ["hugo", "snip"]
+categories: ["AI","Patterns"]        # e.g. ["ideas", "research"]
+tags: ["Prompting", "Patterns"]              # e.g. ["hugo", "snip"]
 aliases: []           # e.g. ["alias1", "alias-two"]
 
 # Optional metadata placeholders
@@ -30,12 +30,6 @@ Salesforce agentforce"         # short summary or abstract
 excerpt: ""         # manual excerpt (if different from summary)
 related: []           # list of related snip UUIDs or slugs
 link: ""            # external resource URL
-
-# Papermod-specific parameters
-snippet: true         # treat as a small note (disables TOC, reading time)
-disableToc: true
-disableReadingTime: true
-
 ---
 A good prompting template can follow this pattern.  
 
