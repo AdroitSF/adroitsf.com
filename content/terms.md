@@ -3,9 +3,6 @@ title: "Terms and Conditions - Creative Commons Attribution-ShareAlike 4.0"
 date: 2025-06-03T21:00:03+12:00
 draft: false
 ---
-
-# Terms and Conditions - Creative Commons Attribution-ShareAlike 4.0
-
 ## License Summary
 This technical blog and its content are licensed under the **Creative Commons
 Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** license. This is a
