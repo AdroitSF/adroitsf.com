@@ -41,4 +41,3 @@ module.exports = {
     // Consider filtering: themeDroitConfig.plugins.filter(plugin => plugin !== require('@tailwindcss/typography'))
   ],
 }
-

@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./themes/droit/assets/css/main.css -o ./static/css/style.css --minify",
-    "build": "hugo --minify",
-    "dev": "hugo server"
+    "build": "npm run build:css && NODE_ENV=production hugo --minify --cleanDestinationDir",
+    "dev": "NODE_ENV=development hugo server"
   },
   "repository": {
     "type": "git",
