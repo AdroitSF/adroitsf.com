@@ -20,7 +20,22 @@ Loop Block in an Integration Procedure needs careful consideration and often
 results in value sets that needs to be corrected. This approach avoids such
 issues.  
 
+# Use Case
+JSON list that needs to be separated based on a node value in the JSON. 
 
+## Prerequisites
+This approach uses Omni Studio low code tooling.  
+It assumes that the JSON list is within an Integration Procedure.  
+
+# Approach
+Retrieve the list of JSON to a node - likely from a Data Mapper.
+Use the List Action, list the Merge List Order to the JSON list.
+Use the Filter List Formula to indicate condition where the item in the JSON
+should be acted on. The output would now be available for that List Action.  
+
+Add additional List Actions with Filter List Formula to achieve other lists.
+
+Assume Input JSON List
 ```JSON
 [
     {
@@ -42,7 +57,7 @@ issues.
 ]
 ```
 
-
+After two List Actions, with Filter List Formula that checks for type value.
 ```JSON
 {
     "Residential": [
