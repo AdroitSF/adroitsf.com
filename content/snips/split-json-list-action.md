@@ -39,7 +39,7 @@ Assume Input JSON List
 ```JSON
 [
     {
-        "Name": "yjCustomer 1",
+        "Name": "Customer 1",
         "Type": "Residential"
     },
     {
