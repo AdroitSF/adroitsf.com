@@ -6,6 +6,7 @@ theme: "droit"
 
 enableGitInfo: true
 
+googleAnalytics: "G-FT91YFD4T1"
 
 outputFormats:
   SearchIndex:
@@ -145,5 +146,3 @@ services:
     disableInlineCSS: true
   twitter:
     disableInlineCSS: true
-  googleAnalytics:
-    id: 477124679
