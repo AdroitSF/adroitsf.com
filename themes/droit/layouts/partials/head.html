@@ -7,3 +7,7 @@
 {{- end }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" media="screen">
 {{- hugo.Generator -}}
+
+{{- if .Site.GoogleAnalytics }}
+  {{ template "_internal/google_analytics.html" . }}
+{{- end }}
